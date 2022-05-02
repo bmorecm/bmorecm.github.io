@@ -17233,6 +17233,7 @@ var adthrive = (function () {
 	var CollapseUtils_1;
 	let CollapseUtils = CollapseUtils_1 = class CollapseUtils {
 	    static changeState(collapseCollection, event) {
+            console.warn('debug state');
 	        const { mediaStarted, playerContainer, playerElement, playerInstance, playerState } = collapseCollection;
 	        logger.info(`CollapseUtils`, `changeState`, `Current player state: ${playerState} ... Player event: ${event}`);
 	        if (event === 7 ) {
@@ -17380,6 +17381,7 @@ var adthrive = (function () {
 	        return playerState;
 	    }
 	    static handleResize(collapseCollection) {
+            console.warn('debug resize');
 	        if (!this._isCollapsed(collapseCollection.playerState)) {
 	            this.resizeContainer(collapseCollection);
 	        }
@@ -17390,7 +17392,6 @@ var adthrive = (function () {
 	        }
 	    }
 	    static handleScroll(collapseCollection) {
-            console.warn('debug scroll');
             return;
 	        if (!VideoUtils.playerInView(collapseCollection.playerElement)) {
 	            collapseCollection.playerState = this.changeState(collapseCollection, 3 );
@@ -18102,6 +18103,7 @@ var adthrive = (function () {
 	        }
 	    }
 	    handleTitleClick(event) {
+            console.warn('debug title click');
 	        if (this._collapseCollection.collapseTimer.firstInView) {
 	            logger.event('jw-player', 'handleTitleClick', {
 	                timeElapsed: Date.now() - this._collapseCollection.collapseTimer.firstInView.valueOf(),
@@ -18110,6 +18112,7 @@ var adthrive = (function () {
 	        }
 	    }
 	    handleFooterRefreshedEvent() {
+            console.warn('debug footer refresh');
 	        if (this._collapseCollection) {
 	            CollapseUtils.repositionCollapseMobileBottom(this._collapseCollection);
 	        }
