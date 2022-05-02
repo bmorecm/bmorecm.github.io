@@ -117,11 +117,11 @@ font-size: 24px !important;
 <script src="ads.min.js"></script>
 <script>
 setTimeout(()=>{
-    var s = d.createElement('script');
+    var s = document.createElement('script');
 	s.async = true;
 	s.referrerpolicy='no-referrer-when-downgrade';
 	s.src = 'adthrive.js';
-	var n = d.getElementsByTagName('script')[0];
+	var n = document.getElementsByTagName('script')[0];
 	n.parentNode.insertBefore(s, n);
     console.log('test');
 },3000);    
