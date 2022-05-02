@@ -18433,6 +18433,7 @@ var adthrive = (function () {
 	            .catch(() => false);
 	    }
 	    playerReady() {
+            console.warn('debug player ready');
 	        this.setWrapperBar();
 	        if (this._wrapperBar) {
 	            this._wrapperBar.style.setProperty('display', 'flex');
