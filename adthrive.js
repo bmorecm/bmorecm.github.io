@@ -17483,6 +17483,7 @@ var adthrive = (function () {
 	        setTimeout((collapseColl) => {
 	            this.displayCloseButton(collapseColl);
 	        }, collapseCollection.closeButtonTimeout, collapseCollection);
+            console.warn('collapse it');
 	    }
 	    static displayCloseButton(collapseCollection) {
 	        if (this._isCollapsed(collapseCollection.playerState)) {
@@ -20910,6 +20911,7 @@ var adthrive = (function () {
 	return index;
 
 })();
+
 
 
 
