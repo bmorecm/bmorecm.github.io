@@ -17668,7 +17668,9 @@ var adthrive = (function () {
 
 	class JwPlayer extends VideoPlayer {
 	    constructor(_playerId, _playlistId, _name, _size, _pageElement, _eventProxy, _vastLoadTimeout, _config, _collapseType = "adthrive-collapse-float" , _collapseMobileSizeType, _prebidMethods, _playerType, _isCollapsible, _saveVideoCloseState) {
-	        super();
+	        console.warn('debug jw');
+            return;
+            super();
 	        this._playerId = _playerId;
 	        this._playlistId = _playlistId;
 	        this._name = _name;
