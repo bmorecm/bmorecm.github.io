@@ -17470,20 +17470,20 @@ var adthrive = (function () {
 	        collapseCollection.playerState = this.changeState(collapseCollection, 1 );
 	    }
 	    static collapse(collapseCollection) {
-	        if (this.disableCollapse) {
-	            logger.info('CollapseUtils', 'Trying to collapse a player, but collapse disabled.');
-	            return;
-	        }
-	        this.collapseEvent.emit().catch(() => { });
-	        //this.toggleCollapsedPlayerClasses(true, collapseCollection);
-	        if (!collapseCollection.forceMobile && collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
-	            this._stickToSidebar(collapseCollection);
-	        }
-	        collapseCollection.playerInstance.resize();
-	        setTimeout((collapseColl) => {
-	            this.displayCloseButton(collapseColl);
-	        }, collapseCollection.closeButtonTimeout, collapseCollection);
-            console.warn('collapse it no toggle');
+	        // if (this.disableCollapse) {
+	        //     logger.info('CollapseUtils', 'Trying to collapse a player, but collapse disabled.');
+	        //     return;
+	        // }
+	        // this.collapseEvent.emit().catch(() => { });
+	        // //this.toggleCollapsedPlayerClasses(true, collapseCollection);
+	        // if (!collapseCollection.forceMobile && collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
+	        //     this._stickToSidebar(collapseCollection);
+	        // }
+	        // collapseCollection.playerInstance.resize();
+	        // setTimeout((collapseColl) => {
+	        //     this.displayCloseButton(collapseColl);
+	        // }, collapseCollection.closeButtonTimeout, collapseCollection);
+            console.warn('collapse it no toggle at all');
 	    }
 	    static displayCloseButton(collapseCollection) {
 	        if (this._isCollapsed(collapseCollection.playerState)) {
