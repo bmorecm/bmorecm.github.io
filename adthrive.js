@@ -17668,8 +17668,6 @@ var adthrive = (function () {
 
 	class JwPlayer extends VideoPlayer {
 	    constructor(_playerId, _playlistId, _name, _size, _pageElement, _eventProxy, _vastLoadTimeout, _config, _collapseType = "adthrive-collapse-float" , _collapseMobileSizeType, _prebidMethods, _playerType, _isCollapsible, _saveVideoCloseState) {
-	        console.warn('debug jw');
-            return;
             super();
 	        this._playerId = _playerId;
 	        this._playlistId = _playlistId;
@@ -17962,13 +17960,14 @@ var adthrive = (function () {
 	        }
 	    }
 	    _setupEventListeners() {
-	        this._handleErrors();
-	        this._handleTimeEvents();
-	        this._handlePlayingEvents();
-	        this._handleAdTrackingEvents();
-	        this._playerInstance.on('ready', () => {
-	            this._startTearDownTimer();
-	        });
+            console.warn('debug event listeners');
+	        // this._handleErrors();
+	        // this._handleTimeEvents();
+	        // this._handlePlayingEvents();
+	        // this._handleAdTrackingEvents();
+	        // this._playerInstance.on('ready', () => {
+	        //     this._startTearDownTimer();
+	        // });
 	    }
 	    jwSetup(playerConfig) {
 	        const config = { ...this._defaults, ...this._baseConfig, ...playerConfig };
