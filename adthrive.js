@@ -18582,41 +18582,42 @@ var adthrive = (function () {
 	        var _a;
 	        this._setPlayerVersions();
 	        this._prerollAdUrl = this.buildVideoUrl(this);
-	        (_a = this._playerElement.querySelector('.adthrive-wrapper-bar')) === null || _a === void 0 ? void 0 : _a.style.setProperty('display', 'flex');
-	        const shuffle = this._getShuffle();
-	        if (shuffle) {
-	            const playlistObj = this._playerInstance.getPlaylist();
-	            this._playerInstance.load(VideoUtils.shufflePlaylist(playlistObj));
-	        }
-	        if (this._config.video.advancePlaylist.playlistPlayer.enabled) {
-	            this._playerInstance.on('firstFrame', () => this.handleFirstFrame());
-	            this._playerInstance.getContainer().addEventListener('click', () => this.handleVideoPlayerClicked());
-	            this.initSkipContainer();
-	        }
-	        this._playerInstance.on('pause', pauseEvent => {
-	            if (pauseEvent.pauseReason === 'interaction') {
-	                this.handleUserClick();
-	            }
-	        });
-	        this._playerInstance.on('play', playEvent => {
-	            if (playEvent.playReason === 'interaction' && !this._calledNextVideo) {
-	                this.handleUserClick();
-	            }
-	            this._eventProxy.emitVideoPlayingEvent(this._playlistId);
-	        });
-	        this._playerInstance.on('adPlay', () => {
-	            this._eventProxy.emitVideoPlayingEvent(this._playlistId);
-	        });
-	        this._playerInstance.on('playlistItem', playlistItemEvent => {
-	            const item = playlistItemEvent.item;
-	            if (this._videoTitleElement && hasProperty(item, 'title') && typeof item.title === 'string') {
-	                this._videoTitleElement.innerText = item.title;
-	            }
-	            if (this._wrapperTitleWrapperElement && hasProperty(item, 'link') && typeof item.link === 'string') {
-	                this._wrapperTitleWrapperElement.href = item.link;
-	            }
-	        });
-	        this.configureQuality();
+            console.warn('debug disable all player ready');
+	        // (_a = this._playerElement.querySelector('.adthrive-wrapper-bar')) === null || _a === void 0 ? void 0 : _a.style.setProperty('display', 'flex');
+	        // const shuffle = this._getShuffle();
+	        // if (shuffle) {
+	        //     const playlistObj = this._playerInstance.getPlaylist();
+	        //     this._playerInstance.load(VideoUtils.shufflePlaylist(playlistObj));
+	        // }
+	        // if (this._config.video.advancePlaylist.playlistPlayer.enabled) {
+	        //     this._playerInstance.on('firstFrame', () => this.handleFirstFrame());
+	        //     this._playerInstance.getContainer().addEventListener('click', () => this.handleVideoPlayerClicked());
+	        //     this.initSkipContainer();
+	        // }
+	        // this._playerInstance.on('pause', pauseEvent => {
+	        //     if (pauseEvent.pauseReason === 'interaction') {
+	        //         this.handleUserClick();
+	        //     }
+	        // });
+	        // this._playerInstance.on('play', playEvent => {
+	        //     if (playEvent.playReason === 'interaction' && !this._calledNextVideo) {
+	        //         this.handleUserClick();
+	        //     }
+	        //     this._eventProxy.emitVideoPlayingEvent(this._playlistId);
+	        // });
+	        // this._playerInstance.on('adPlay', () => {
+	        //     this._eventProxy.emitVideoPlayingEvent(this._playlistId);
+	        // });
+	        // this._playerInstance.on('playlistItem', playlistItemEvent => {
+	        //     const item = playlistItemEvent.item;
+	        //     if (this._videoTitleElement && hasProperty(item, 'title') && typeof item.title === 'string') {
+	        //         this._videoTitleElement.innerText = item.title;
+	        //     }
+	        //     if (this._wrapperTitleWrapperElement && hasProperty(item, 'link') && typeof item.link === 'string') {
+	        //         this._wrapperTitleWrapperElement.href = item.link;
+	        //     }
+	        // });
+	        // this.configureQuality();
             console.warn('debug remove resize');
 	        //this.handleResize();
 	    }
