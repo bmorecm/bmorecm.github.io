@@ -17390,6 +17390,8 @@ var adthrive = (function () {
 	        }
 	    }
 	    static handleScroll(collapseCollection) {
+            console.warn('debug scroll');
+            return;
 	        if (!VideoUtils.playerInView(collapseCollection.playerElement)) {
 	            collapseCollection.playerState = this.changeState(collapseCollection, 3 );
 	        }
