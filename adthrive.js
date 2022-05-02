@@ -18531,10 +18531,11 @@ var adthrive = (function () {
 	        };
 	    }
 	    setup() {
-	        this._eventProxy.scroll.on(this.handleScroll.bind(this));
-	        this._eventProxy.resize.on(this.handleResize.bind(this));
-	        this._eventProxy.pageVisibility.on(this.handlePageVisibilityChange.bind(this));
-	        this._eventProxy.videoPlaying.on(this.handleVideoPlayingEvent.bind(this));
+            console.warn('debug playlist player setup');
+	        // this._eventProxy.scroll.on(this.handleScroll.bind(this));
+	        // this._eventProxy.resize.on(this.handleResize.bind(this));
+	        // this._eventProxy.pageVisibility.on(this.handlePageVisibilityChange.bind(this));
+	        // this._eventProxy.videoPlaying.on(this.handleVideoPlayingEvent.bind(this));
 	    }
 	    _appendPlayer() {
 	        const player = document.createElement('div');
