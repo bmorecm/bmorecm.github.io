@@ -18617,7 +18617,8 @@ var adthrive = (function () {
 	            }
 	        });
 	        this.configureQuality();
-	        this.handleResize();
+            console.warn('debug remove resize');
+	        //this.handleResize();
 	    }
 	    _getShuffle() {
 	        return this._shuffle ? this._shuffle : false;
