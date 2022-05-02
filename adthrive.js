@@ -17475,7 +17475,7 @@ var adthrive = (function () {
 	            return;
 	        }
 	        this.collapseEvent.emit().catch(() => { });
-	        this.toggleCollapsedPlayerClasses(true, collapseCollection);
+	        //this.toggleCollapsedPlayerClasses(true, collapseCollection);
 	        if (!collapseCollection.forceMobile && collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
 	            this._stickToSidebar(collapseCollection);
 	        }
@@ -17483,7 +17483,7 @@ var adthrive = (function () {
 	        setTimeout((collapseColl) => {
 	            this.displayCloseButton(collapseColl);
 	        }, collapseCollection.closeButtonTimeout, collapseCollection);
-            console.warn('collapse it');
+            console.warn('collapse it no toggle');
 	    }
 	    static displayCloseButton(collapseCollection) {
 	        if (this._isCollapsed(collapseCollection.playerState)) {
