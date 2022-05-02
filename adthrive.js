@@ -17821,6 +17821,7 @@ var adthrive = (function () {
 	    }
 	    _tearDownPlayer() {
 	        if (this._tearDownAfterNextAd) {
+                console.warn('tear down');
 	            logger.info('JwPlayer', 'tearDownPlayer', 'Tear down initiated');
 	            this._tearDownAfterNextAd = false;
 	            if (this._tearDownTimer) {
