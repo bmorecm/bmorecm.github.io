@@ -17972,22 +17972,23 @@ var adthrive = (function () {
 	    jwSetup(playerConfig) {
 	        const config = { ...this._defaults, ...this._baseConfig, ...playerConfig };
 	        this._playerInstance.setup(config);
-	        this.handleNonLinearAd();
-	        this._setupEventListeners();
-	        this._playerInstance.on('adLoaded', data => {
-	            const adDetails = data.ima && data.ima.ad && data.ima.ad.h;
-	            const currentAdDuration = (adDetails && adDetails.duration) || data.duration || this._defaultAdDuration;
-	            this._currentAdDurationWithBuffer = currentAdDuration + this._adTimingBuffer;
-	            if (adDetails) {
-	                this._adDetails = {
-	                    gamLineItem: adDetails.adWrapperIds,
-	                    gamCreativeId: adDetails.adWrapperCreativeIds,
-	                    vastCreativeId: adDetails.creativeId,
-	                    mediaFileURL: adDetails.mediaUrl,
-	                };
-	            }
-	            this._setStaleAdDetection();
-	        });
+            console.warn('debug setup');
+	        //this.handleNonLinearAd();
+	        //this._setupEventListeners();
+	        // this._playerInstance.on('adLoaded', data => {
+	        //     const adDetails = data.ima && data.ima.ad && data.ima.ad.h;
+	        //     const currentAdDuration = (adDetails && adDetails.duration) || data.duration || this._defaultAdDuration;
+	        //     this._currentAdDurationWithBuffer = currentAdDuration + this._adTimingBuffer;
+	        //     if (adDetails) {
+	        //         this._adDetails = {
+	        //             gamLineItem: adDetails.adWrapperIds,
+	        //             gamCreativeId: adDetails.adWrapperCreativeIds,
+	        //             vastCreativeId: adDetails.creativeId,
+	        //             mediaFileURL: adDetails.mediaUrl,
+	        //         };
+	        //     }
+	        //     this._setStaleAdDetection();
+	        // });
 	    }
 	    _clearStaleTimers() {
 	        if (this._stalePlayerTimer) {
