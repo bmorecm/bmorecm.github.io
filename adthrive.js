@@ -18577,6 +18577,7 @@ var adthrive = (function () {
 	        this.jwSetup(this._playerConfig);
 	        this._playerInstance.on('ready', this.playerReady.bind(this));
 	        this._config.video.playlistPlayerAdded = true;
+            console.warn("debug add to page");
 	        logger.info('CollapsePlayer', 'addToPage', `Video > JW Collapse ${this._playerId} added`);
 	    }
 	    playerReady() {
