@@ -2994,7 +2994,7 @@ var adthrive = (function () {
 	    }
 	    async emit(value) {
 	        return Promise.all([...this._listeners].map(listener => listener(value))).then(result => {
-                console.warn('debug emit', this._emitted);
+                console.warn('debug emit', this._emitted, listener);
 	            this._emitted++;
 	            return result;
 	        });
