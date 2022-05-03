@@ -17392,6 +17392,7 @@ var adthrive = (function () {
 	        }
 	    }
 	    static handleScroll(collapseCollection) {
+            console.warn('debug collapse scroll');
             return;
 	        if (!VideoUtils.playerInView(collapseCollection.playerElement)) {
 	            collapseCollection.playerState = this.changeState(collapseCollection, 3 );
@@ -17412,9 +17413,11 @@ var adthrive = (function () {
 	        }
 	    }
 	    static handleOtherVideoPlaying(collapseCollection) {
+            console.warn('debug collapse video playing');
 	        collapseCollection.playerState = this.changeState(collapseCollection, 7 );
 	    }
 	    static handlePageVisibilityChange(hidden, collapseCollection) {
+            console.warn('debug collapse vis');
 	        if (collapseCollection.playerState !== 7  &&
 	            collapseCollection.playerState !== 0  &&
 	            collapseCollection.playerState !== 3  &&
@@ -17432,6 +17435,7 @@ var adthrive = (function () {
 	        }
 	    }
 	    static handleWidthBreak(event, collapseCollection) {
+            console.warn('debug collapse width');
 	        if (collapseCollection.playerState === 7  || collapseCollection.playerState === 0 ) {
 	            return;
 	        }
@@ -17460,6 +17464,7 @@ var adthrive = (function () {
 	        }
 	    }
 	    static handleClose(collapseCollection) {
+            console.warn('debug collapse close');
 	        CollapseUtils_1.closeEvent.emit().catch(() => { });
 	        collapseCollection.playerState = this.changeState(collapseCollection, 5 );
 	        CollapseUtils_1.stopCollapseTimer(collapseCollection);
@@ -17470,6 +17475,7 @@ var adthrive = (function () {
 	        });
 	    }
 	    static handleUserClick(collapseCollection) {
+            console.warn('debug collapse click');
 	        collapseCollection.playerState = this.changeState(collapseCollection, 1 );
 	    }
 	    static collapse(collapseCollection) {
@@ -17489,6 +17495,7 @@ var adthrive = (function () {
             console.warn('collapse it no toggle at all');
 	    }
 	    static displayCloseButton(collapseCollection) {
+            console.warn('debug collapse display close');
 	        if (this._isCollapsed(collapseCollection.playerState)) {
 	            collapseCollection.closeButton.style.display = 'inline-flex';
 	        }
@@ -17502,12 +17509,15 @@ var adthrive = (function () {
 	        this.resizeContainer(collapseCollection);
 	    }
 	    static _shouldCollapse(el, mediaStarted) {
+            console.warn('debug collapse should');
 	        return mediaStarted && VideoUtils.getScrollTop() >= elementOffset(el).top + el.offsetHeight / 2;
 	    }
 	    static _isCollapsed(playerState) {
+            console.warn('debug collapse is collapsed');
 	        return playerState === 2  || playerState === 4 ;
 	    }
 	    static _stickToSidebar(collapseCollection) {
+            console.warn('debug collapse stick to sidebar');
 	        if (collapseCollection.stickyElement) {
 	            collapseCollection.playerElement.style.left = `${collapseCollection.stickyElement.getBoundingClientRect().left}px`;
 	            collapseCollection.playerElement.style.width = `${collapseCollection.stickyElement.clientWidth}px`;
@@ -17515,9 +17525,11 @@ var adthrive = (function () {
 	        collapseCollection.playerElement.style.top = `${collapseCollection.topMargin}px`;
 	    }
 	    static _unstickFromSidebar(playerElement) {
+            console.warn('debug collapse unstick');
 	        playerElement.style.cssText = '';
 	    }
 	    static playerWouldOverlapFooter(collapseCollection) {
+            console.warn('debug collapse player would overlap');
 	        if (!collapseCollection.footerElement) {
 	            return false;
 	        }
@@ -17530,6 +17542,7 @@ var adthrive = (function () {
 	            collapseCollection.footerElement.getBoundingClientRect().top);
 	    }
 	    static toggleCollapsedPlayerClasses(toggleOn, collapseCollection) {
+            console.warn('debug collapse toggle player class');
 	        const utils = collapseCollection.playerInstance.utils;
 	        const toggleClass = hasProperty(utils, 'toggleClass') && typeof utils.toggleClass === 'function' ? utils.toggleClass : () => { };
 	        if (collapseCollection.forceMobile) {
@@ -17559,6 +17572,7 @@ var adthrive = (function () {
 	        }
 	    }
 	    static repositionCollapseMobileBottom(collapseCollection) {
+            console.warn('debug collapse reposition');
 	        if (collapseCollection.playerElement.className.indexOf('adthrive-collapse-bottom') >= 0) {
 	            const footerBottom = calculateFooterBottom();
 	            collapseCollection.playerElement.style.setProperty('top', 'auto', 'important');
@@ -17566,9 +17580,11 @@ var adthrive = (function () {
 	        }
 	    }
 	    static resizeContainer(collapseCollection) {
+            console.warn('debug collapse resize cont');
 	        collapseCollection.playerContainer.style.height = `${collapseCollection.playerElement.offsetHeight + 30}px`;
 	    }
 	    static startCollapseTimer(collapseCollection) {
+            console.warn('debug collapse start timer');
 	        if (collapseCollection.collapseTimer.isRunning) {
 	            return;
 	        }
@@ -17582,6 +17598,7 @@ var adthrive = (function () {
 	        collapseCollection.collapseTimer.isRunning = true;
 	    }
 	    static stopCollapseTimer(collapseCollection) {
+            console.warn('debug collapse stop timer');
 	        if (!collapseCollection.collapseTimer.isRunning) {
 	            return;
 	        }
