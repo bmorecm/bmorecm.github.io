@@ -17932,6 +17932,7 @@ var adthrive = (function () {
 	            ['play', 'adPlay'].forEach(eventType => {
 	                this._playerInstance.once(eventType, () => {
 	                    this._collapseCollection.mediaStarted = true;
+                        console.warn('debug handle collapse scroll');
 	                    CollapseUtils.handleScroll(this._collapseCollection);
 	                });
 	            });
