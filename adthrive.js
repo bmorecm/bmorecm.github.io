@@ -18569,11 +18569,12 @@ var adthrive = (function () {
 	            this._appendPlayer();
 	        }
 	        this._playerInstance = window.jwplayer(this._playlistId);
-	        if (this._collapseCollection) {
-	            this._collapseCollection.playerInstance = this._playerInstance;
-	            this._collapseCollection.playerContainer = this._playerContainer;
-	            this._collapseCollection.playerElement = this._playerElement;
-	        }
+            console.warn('debug removing collapse');
+	        // if (this._collapseCollection) {
+	        //     this._collapseCollection.playerInstance = this._playerInstance;
+	        //     this._collapseCollection.playerContainer = this._playerContainer;
+	        //     this._collapseCollection.playerElement = this._playerElement;
+	        // }
 	        this.jwSetup(this._playerConfig);
 	        this._playerInstance.on('ready', this.playerReady.bind(this));
 	        this._config.video.playlistPlayerAdded = true;
