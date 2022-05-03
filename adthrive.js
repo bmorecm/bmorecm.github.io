@@ -2993,11 +2993,12 @@ var adthrive = (function () {
 	        });
 	    }
 	    async emit(value) {
-	        return Promise.all([...this._listeners].map(listener => listener(value))).then(result => {
-                console.warn('debug emit', this._emitted, value);
-	            this._emitted++;
-	            return result;
-	        });
+            console.warn('debug remove emitter');
+	        // return Promise.all([...this._listeners].map(listener => listener(value))).then(result => {
+            //     console.warn('debug emit', this._emitted, value);
+	        //     this._emitted++;
+	        //     return result;
+	        // });
 	    }
 	    clear() {
 	        this._listeners.clear();
