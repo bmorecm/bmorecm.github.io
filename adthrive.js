@@ -17971,6 +17971,7 @@ var adthrive = (function () {
 	    }
 	    jwSetup(playerConfig) {
 	        const config = { ...this._defaults, ...this._baseConfig, ...playerConfig };
+            console.warn('debug player instance', this._playerInstance);
 	        this._playerInstance.setup(config);
             console.warn('debug setup all');
 	        //this.handleNonLinearAd();
