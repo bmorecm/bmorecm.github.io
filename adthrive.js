@@ -17234,249 +17234,249 @@ var adthrive = (function () {
 	let CollapseUtils = CollapseUtils_1 = class CollapseUtils {
 	    static changeState(collapseCollection, event) {
             console.warn('debug state');
-	        const { mediaStarted, playerContainer, playerElement, playerInstance, playerState } = collapseCollection;
-	        logger.info(`CollapseUtils`, `changeState`, `Current player state: ${playerState} ... Player event: ${event}`);
-	        if (event === 7 ) {
-	            this.uncollapse(collapseCollection);
-	            playerInstance.pause(true);
-	            return 7 ;
-	        }
-	        switch (playerState) {
-	            case 0 :
-	                if (event === 4 ) {
-	                    if (!collapseCollection.collapseTimer.firstInView) {
-	                        collapseCollection.collapseTimer.firstInView = new Date();
-	                    }
-	                    CollapseUtils_1.startEvent.emit().catch(() => { });
-	                    if (this._shouldCollapse(playerContainer, mediaStarted)) {
-	                        this.collapse(collapseCollection);
-	                        playerInstance.getViewable() && playerInstance.play(true);
-	                        return playerInstance._nonLinearAd ? 8  : 2 ;
-	                    }
-	                    else {
-	                        return playerInstance._nonLinearAd ? 8  : 1 ;
-	                    }
-	                }
-	                break;
-	            case 1 :
-	                if (event === 4 ) {
-	                    if (this._shouldCollapse(playerContainer, mediaStarted)) {
-	                        this.collapse(collapseCollection);
-	                        playerInstance.play(true);
-	                        return 2 ;
-	                    }
-	                    else {
-	                        playerInstance.play(true);
-	                    }
-	                }
-	                else if (event === 3 ) {
-	                    playerInstance.pause(true);
-	                    return 5 ;
-	                }
-	                else if (event === 1 ) {
-	                    return 3 ;
-	                }
-	                break;
-	            case 2 :
-	                if (event === 4 ) {
-	                    if (!this._shouldCollapse(playerContainer, mediaStarted)) {
-	                        this.uncollapse(collapseCollection);
-	                        playerInstance.play(true);
-	                        return 1 ;
-	                    }
-	                    else {
-	                        playerInstance.play(true);
-	                    }
-	                }
-	                else if (event === 1 ) {
-	                    return 4 ;
-	                }
-	                else if (event === 6 ) {
-	                    collapseCollection.lastCollapsedClasses = playerElement.className;
-	                    this.uncollapse(collapseCollection);
-	                    playerInstance.pause(true);
-	                    return 6 ;
-	                }
-	                else if (event === 5 ) {
-	                    this.uncollapse(collapseCollection);
-	                    playerInstance.pause(true);
-	                    return 7 ;
-	                }
-	                break;
-	            case 8 :
-	                if (event === 4 ) {
-	                    if (this._shouldCollapse(playerContainer, mediaStarted)) {
-	                        this.collapse(collapseCollection);
-	                    }
-	                }
-	                else if (event === 3 ) {
-	                    playerInstance.pauseAd(true);
-	                    return 9 ;
-	                }
-	                else if (event === 6 ) {
-	                    this.uncollapse(collapseCollection);
-	                    playerInstance.pauseAd(true);
-	                    return 10 ;
-	                }
-	                break;
-	            case 4 :
-	                if (event === 4  && !this._shouldCollapse(playerContainer, mediaStarted)) {
-	                    this.uncollapse(collapseCollection);
-	                    return 3 ;
-	                }
-	                else if (event === 1 ) {
-	                    return 2 ;
-	                }
-	                else if (event === 5 ) {
-	                    this.uncollapse(collapseCollection);
-	                    playerInstance.pause(true);
-	                    return 7 ;
-	                }
-	                break;
-	            case 3 :
-	                if (event === 4  && this._shouldCollapse(playerContainer, mediaStarted)) {
-	                    this.collapse(collapseCollection);
-	                    return 4 ;
-	                }
-	                else if (event === 1 ) {
-	                    return 1 ;
-	                }
-	                break;
-	            case 5 :
-	                if (event === 4 ) {
-	                    playerInstance.play(true);
-	                    return 1 ;
-	                }
-	            case 9 :
-	                if (event === 4 ) {
-	                    playerInstance.pauseAd(false);
-	                    return 8 ;
-	                }
-	                else if (this.playerWouldOverlapFooter(collapseCollection)) {
-	                    return 10 ;
-	                }
-	                break;
-	            case 6 :
-	                if (this._shouldCollapse(playerElement, mediaStarted) && !this.playerWouldOverlapFooter(collapseCollection)) {
-	                    this.collapse(collapseCollection);
-	                    playerInstance.play(true);
-	                    return 2 ;
-	                }
-	                else {
-	                    return 6 ;
-	                }
-	            case 10 :
-	                if (this._shouldCollapse(playerElement, mediaStarted) && !this.playerWouldOverlapFooter(collapseCollection)) {
-	                    this.collapse(collapseCollection);
-	                    playerInstance.pauseAd(false);
-	                    return 8 ;
-	                }
-	                else {
-	                    playerInstance.pauseAd(true);
-	                    return 10 ;
-	                }
-	            default:
-	                return playerState;
-	        }
-	        return playerState;
+	        // const { mediaStarted, playerContainer, playerElement, playerInstance, playerState } = collapseCollection;
+	        // logger.info(`CollapseUtils`, `changeState`, `Current player state: ${playerState} ... Player event: ${event}`);
+	        // if (event === 7 ) {
+	        //     this.uncollapse(collapseCollection);
+	        //     playerInstance.pause(true);
+	        //     return 7 ;
+	        // }
+	        // switch (playerState) {
+	        //     case 0 :
+	        //         if (event === 4 ) {
+	        //             if (!collapseCollection.collapseTimer.firstInView) {
+	        //                 collapseCollection.collapseTimer.firstInView = new Date();
+	        //             }
+	        //             CollapseUtils_1.startEvent.emit().catch(() => { });
+	        //             if (this._shouldCollapse(playerContainer, mediaStarted)) {
+	        //                 this.collapse(collapseCollection);
+	        //                 playerInstance.getViewable() && playerInstance.play(true);
+	        //                 return playerInstance._nonLinearAd ? 8  : 2 ;
+	        //             }
+	        //             else {
+	        //                 return playerInstance._nonLinearAd ? 8  : 1 ;
+	        //             }
+	        //         }
+	        //         break;
+	        //     case 1 :
+	        //         if (event === 4 ) {
+	        //             if (this._shouldCollapse(playerContainer, mediaStarted)) {
+	        //                 this.collapse(collapseCollection);
+	        //                 playerInstance.play(true);
+	        //                 return 2 ;
+	        //             }
+	        //             else {
+	        //                 playerInstance.play(true);
+	        //             }
+	        //         }
+	        //         else if (event === 3 ) {
+	        //             playerInstance.pause(true);
+	        //             return 5 ;
+	        //         }
+	        //         else if (event === 1 ) {
+	        //             return 3 ;
+	        //         }
+	        //         break;
+	        //     case 2 :
+	        //         if (event === 4 ) {
+	        //             if (!this._shouldCollapse(playerContainer, mediaStarted)) {
+	        //                 this.uncollapse(collapseCollection);
+	        //                 playerInstance.play(true);
+	        //                 return 1 ;
+	        //             }
+	        //             else {
+	        //                 playerInstance.play(true);
+	        //             }
+	        //         }
+	        //         else if (event === 1 ) {
+	        //             return 4 ;
+	        //         }
+	        //         else if (event === 6 ) {
+	        //             collapseCollection.lastCollapsedClasses = playerElement.className;
+	        //             this.uncollapse(collapseCollection);
+	        //             playerInstance.pause(true);
+	        //             return 6 ;
+	        //         }
+	        //         else if (event === 5 ) {
+	        //             this.uncollapse(collapseCollection);
+	        //             playerInstance.pause(true);
+	        //             return 7 ;
+	        //         }
+	        //         break;
+	        //     case 8 :
+	        //         if (event === 4 ) {
+	        //             if (this._shouldCollapse(playerContainer, mediaStarted)) {
+	        //                 this.collapse(collapseCollection);
+	        //             }
+	        //         }
+	        //         else if (event === 3 ) {
+	        //             playerInstance.pauseAd(true);
+	        //             return 9 ;
+	        //         }
+	        //         else if (event === 6 ) {
+	        //             this.uncollapse(collapseCollection);
+	        //             playerInstance.pauseAd(true);
+	        //             return 10 ;
+	        //         }
+	        //         break;
+	        //     case 4 :
+	        //         if (event === 4  && !this._shouldCollapse(playerContainer, mediaStarted)) {
+	        //             this.uncollapse(collapseCollection);
+	        //             return 3 ;
+	        //         }
+	        //         else if (event === 1 ) {
+	        //             return 2 ;
+	        //         }
+	        //         else if (event === 5 ) {
+	        //             this.uncollapse(collapseCollection);
+	        //             playerInstance.pause(true);
+	        //             return 7 ;
+	        //         }
+	        //         break;
+	        //     case 3 :
+	        //         if (event === 4  && this._shouldCollapse(playerContainer, mediaStarted)) {
+	        //             this.collapse(collapseCollection);
+	        //             return 4 ;
+	        //         }
+	        //         else if (event === 1 ) {
+	        //             return 1 ;
+	        //         }
+	        //         break;
+	        //     case 5 :
+	        //         if (event === 4 ) {
+	        //             playerInstance.play(true);
+	        //             return 1 ;
+	        //         }
+	        //     case 9 :
+	        //         if (event === 4 ) {
+	        //             playerInstance.pauseAd(false);
+	        //             return 8 ;
+	        //         }
+	        //         else if (this.playerWouldOverlapFooter(collapseCollection)) {
+	        //             return 10 ;
+	        //         }
+	        //         break;
+	        //     case 6 :
+	        //         if (this._shouldCollapse(playerElement, mediaStarted) && !this.playerWouldOverlapFooter(collapseCollection)) {
+	        //             this.collapse(collapseCollection);
+	        //             playerInstance.play(true);
+	        //             return 2 ;
+	        //         }
+	        //         else {
+	        //             return 6 ;
+	        //         }
+	        //     case 10 :
+	        //         if (this._shouldCollapse(playerElement, mediaStarted) && !this.playerWouldOverlapFooter(collapseCollection)) {
+	        //             this.collapse(collapseCollection);
+	        //             playerInstance.pauseAd(false);
+	        //             return 8 ;
+	        //         }
+	        //         else {
+	        //             playerInstance.pauseAd(true);
+	        //             return 10 ;
+	        //         }
+	        //     default:
+	        //         return playerState;
+	        // }
+	        // return playerState;
 	    }
 	    static handleResize(collapseCollection) {
             console.warn('debug resize');
-	        if (!this._isCollapsed(collapseCollection.playerState)) {
-	            this.resizeContainer(collapseCollection);
-	        }
-	        else {
-	            if (!collapseCollection.forceMobile && collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
-	                this._stickToSidebar(collapseCollection);
-	            }
-	        }
+	        // if (!this._isCollapsed(collapseCollection.playerState)) {
+	        //     this.resizeContainer(collapseCollection);
+	        // }
+	        // else {
+	        //     if (!collapseCollection.forceMobile && collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
+	        //         this._stickToSidebar(collapseCollection);
+	        //     }
+	        // }
 	    }
 	    static handleScroll(collapseCollection) {
             console.warn('debug collapse scroll');
             return;
-	        if (!VideoUtils.playerInView(collapseCollection.playerElement)) {
-	            collapseCollection.playerState = this.changeState(collapseCollection, 3 );
-	        }
-	        else {
-	            if (this.playerWouldOverlapFooter(collapseCollection)) {
-	                collapseCollection.playerState = this.changeState(collapseCollection, 6 );
-	            }
-	            else {
-	                collapseCollection.playerState = this.changeState(collapseCollection, 4 );
-	            }
-	        }
-	        if (collapseCollection.playerState === 2  || collapseCollection.playerState === 4 ) {
-	            CollapseUtils_1.startCollapseTimer(collapseCollection);
-	        }
-	        else {
-	            CollapseUtils_1.stopCollapseTimer(collapseCollection);
-	        }
+	        // if (!VideoUtils.playerInView(collapseCollection.playerElement)) {
+	        //     collapseCollection.playerState = this.changeState(collapseCollection, 3 );
+	        // }
+	        // else {
+	        //     if (this.playerWouldOverlapFooter(collapseCollection)) {
+	        //         collapseCollection.playerState = this.changeState(collapseCollection, 6 );
+	        //     }
+	        //     else {
+	        //         collapseCollection.playerState = this.changeState(collapseCollection, 4 );
+	        //     }
+	        // }
+	        // if (collapseCollection.playerState === 2  || collapseCollection.playerState === 4 ) {
+	        //     CollapseUtils_1.startCollapseTimer(collapseCollection);
+	        // }
+	        // else {
+	        //     CollapseUtils_1.stopCollapseTimer(collapseCollection);
+	        // }
 	    }
 	    static handleOtherVideoPlaying(collapseCollection) {
             console.warn('debug collapse video playing');
-	        collapseCollection.playerState = this.changeState(collapseCollection, 7 );
+	        //collapseCollection.playerState = this.changeState(collapseCollection, 7 );
 	    }
 	    static handlePageVisibilityChange(hidden, collapseCollection) {
             console.warn('debug collapse vis');
-	        if (collapseCollection.playerState !== 7  &&
-	            collapseCollection.playerState !== 0  &&
-	            collapseCollection.playerState !== 3  &&
-	            collapseCollection.playerState !== 4  &&
-	            collapseCollection.playerState !== 5  &&
-	            collapseCollection.playerState !== 6 ) {
-	            if (hidden) {
-	                logger.info('CollapsePlayer', 'handlePageVisibilityChange', 'Video > Pausing player due to page not being visible');
-	                collapseCollection.playerInstance.pause(true);
-	            }
-	            else {
-	                logger.info('CollapsePlayer', 'handlePageVisibilityChange', 'Video > Playing player due to page being visible');
-	                collapseCollection.playerInstance.play(true);
-	            }
-	        }
+	        // if (collapseCollection.playerState !== 7  &&
+	        //     collapseCollection.playerState !== 0  &&
+	        //     collapseCollection.playerState !== 3  &&
+	        //     collapseCollection.playerState !== 4  &&
+	        //     collapseCollection.playerState !== 5  &&
+	        //     collapseCollection.playerState !== 6 ) {
+	        //     if (hidden) {
+	        //         logger.info('CollapsePlayer', 'handlePageVisibilityChange', 'Video > Pausing player due to page not being visible');
+	        //         collapseCollection.playerInstance.pause(true);
+	        //     }
+	        //     else {
+	        //         logger.info('CollapsePlayer', 'handlePageVisibilityChange', 'Video > Playing player due to page being visible');
+	        //         collapseCollection.playerInstance.play(true);
+	        //     }
+	        // }
 	    }
 	    static handleWidthBreak(event, collapseCollection) {
             console.warn('debug collapse width');
-	        if (collapseCollection.playerState === 7  || collapseCollection.playerState === 0 ) {
-	            return;
-	        }
-	        if (event.matches) {
-	            logger.info('CollapsePlayer', 'handleWidthBreak', `Video > JW Collapse forcing mobile`);
-	            if (this._isCollapsed(collapseCollection.playerState)) {
-	                this.toggleCollapsedPlayerClasses(false, collapseCollection);
-	                if (collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
-	                    this._unstickFromSidebar(collapseCollection.playerElement);
-	                }
-	                collapseCollection.forceMobile = true;
-	                this.toggleCollapsedPlayerClasses(true, collapseCollection);
-	            }
-	            collapseCollection.forceMobile = true;
-	        }
-	        else {
-	            logger.info('CollapsePlayer', 'handleWidthBreak', `Video > JW Collapse not mobile`);
-	            this.toggleCollapsedPlayerClasses(false, collapseCollection);
-	            collapseCollection.forceMobile = false;
-	            if (this._isCollapsed(collapseCollection.playerState)) {
-	                this.toggleCollapsedPlayerClasses(true, collapseCollection);
-	                if (collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
-	                    this._stickToSidebar(collapseCollection);
-	                }
-	            }
-	        }
+	        // if (collapseCollection.playerState === 7  || collapseCollection.playerState === 0 ) {
+	        //     return;
+	        // }
+	        // if (event.matches) {
+	        //     logger.info('CollapsePlayer', 'handleWidthBreak', `Video > JW Collapse forcing mobile`);
+	        //     if (this._isCollapsed(collapseCollection.playerState)) {
+	        //         this.toggleCollapsedPlayerClasses(false, collapseCollection);
+	        //         if (collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
+	        //             this._unstickFromSidebar(collapseCollection.playerElement);
+	        //         }
+	        //         collapseCollection.forceMobile = true;
+	        //         this.toggleCollapsedPlayerClasses(true, collapseCollection);
+	        //     }
+	        //     collapseCollection.forceMobile = true;
+	        // }
+	        // else {
+	        //     logger.info('CollapsePlayer', 'handleWidthBreak', `Video > JW Collapse not mobile`);
+	        //     this.toggleCollapsedPlayerClasses(false, collapseCollection);
+	        //     collapseCollection.forceMobile = false;
+	        //     if (this._isCollapsed(collapseCollection.playerState)) {
+	        //         this.toggleCollapsedPlayerClasses(true, collapseCollection);
+	        //         if (collapseCollection.collapseType === "adthrive-collapse-sticky" ) {
+	        //             this._stickToSidebar(collapseCollection);
+	        //         }
+	        //     }
+	        // }
 	    }
 	    static handleClose(collapseCollection) {
             console.warn('debug collapse close');
-	        CollapseUtils_1.closeEvent.emit().catch(() => { });
-	        collapseCollection.playerState = this.changeState(collapseCollection, 5 );
-	        CollapseUtils_1.stopCollapseTimer(collapseCollection);
-	        logger.event('jw-player', 'handleClose', {
-	            timeElapsed: collapseCollection.collapseTimer.timeCollapsed,
-	            device: isDesktop() ? 'desktop' : 'mobile',
-	            playerType: collapseCollection.playerType,
-	        });
+	        // CollapseUtils_1.closeEvent.emit().catch(() => { });
+	        // collapseCollection.playerState = this.changeState(collapseCollection, 5 );
+	        // CollapseUtils_1.stopCollapseTimer(collapseCollection);
+	        // logger.event('jw-player', 'handleClose', {
+	        //     timeElapsed: collapseCollection.collapseTimer.timeCollapsed,
+	        //     device: isDesktop() ? 'desktop' : 'mobile',
+	        //     playerType: collapseCollection.playerType,
+	        // });
 	    }
 	    static handleUserClick(collapseCollection) {
             console.warn('debug collapse click');
-	        collapseCollection.playerState = this.changeState(collapseCollection, 1 );
+	        //collapseCollection.playerState = this.changeState(collapseCollection, 1 );
 	    }
 	    static collapse(collapseCollection) {
 	        // if (this.disableCollapse) {
@@ -17496,80 +17496,80 @@ var adthrive = (function () {
 	    }
 	    static displayCloseButton(collapseCollection) {
             console.warn('debug collapse display close');
-	        if (this._isCollapsed(collapseCollection.playerState)) {
-	            collapseCollection.closeButton.style.display = 'inline-flex';
-	        }
+	        // if (this._isCollapsed(collapseCollection.playerState)) {
+	        //     collapseCollection.closeButton.style.display = 'inline-flex';
+	        // }
 	    }
 	    static uncollapse(collapseCollection) {
             console.warn('debug uncollapse');
-	        CollapseUtils_1.uncollapseEvent.emit().catch(() => { });
-	        this.toggleCollapsedPlayerClasses(false, collapseCollection);
-	        this._unstickFromSidebar(collapseCollection.playerElement);
-	        collapseCollection.closeButton.style.display = 'none';
-	        this.resizeContainer(collapseCollection);
+	        // CollapseUtils_1.uncollapseEvent.emit().catch(() => { });
+	        // this.toggleCollapsedPlayerClasses(false, collapseCollection);
+	        // this._unstickFromSidebar(collapseCollection.playerElement);
+	        // collapseCollection.closeButton.style.display = 'none';
+	        // this.resizeContainer(collapseCollection);
 	    }
 	    static _shouldCollapse(el, mediaStarted) {
             console.warn('debug collapse should');
-	        return mediaStarted && VideoUtils.getScrollTop() >= elementOffset(el).top + el.offsetHeight / 2;
+	        //return mediaStarted && VideoUtils.getScrollTop() >= elementOffset(el).top + el.offsetHeight / 2;
 	    }
 	    static _isCollapsed(playerState) {
             console.warn('debug collapse is collapsed');
-	        return playerState === 2  || playerState === 4 ;
+	        //return playerState === 2  || playerState === 4 ;
 	    }
 	    static _stickToSidebar(collapseCollection) {
             console.warn('debug collapse stick to sidebar');
-	        if (collapseCollection.stickyElement) {
-	            collapseCollection.playerElement.style.left = `${collapseCollection.stickyElement.getBoundingClientRect().left}px`;
-	            collapseCollection.playerElement.style.width = `${collapseCollection.stickyElement.clientWidth}px`;
-	        }
-	        collapseCollection.playerElement.style.top = `${collapseCollection.topMargin}px`;
+	        // if (collapseCollection.stickyElement) {
+	        //     collapseCollection.playerElement.style.left = `${collapseCollection.stickyElement.getBoundingClientRect().left}px`;
+	        //     collapseCollection.playerElement.style.width = `${collapseCollection.stickyElement.clientWidth}px`;
+	        // }
+	        // collapseCollection.playerElement.style.top = `${collapseCollection.topMargin}px`;
 	    }
 	    static _unstickFromSidebar(playerElement) {
             console.warn('debug collapse unstick');
-	        playerElement.style.cssText = '';
+	        //playerElement.style.cssText = '';
 	    }
 	    static playerWouldOverlapFooter(collapseCollection) {
             console.warn('debug collapse player would overlap');
-	        if (!collapseCollection.footerElement) {
-	            return false;
-	        }
-	        if (collapseCollection.playerElement.className.indexOf('adthrive-collapse-bottom') >= 0 ||
-	            (collapseCollection.lastCollapsedClasses && collapseCollection.lastCollapsedClasses.indexOf('adthrive-collapse-bottom') >= 0)) {
-	            const footerBottom = calculateFooterBottom();
-	            return !(window.innerHeight - footerBottom < collapseCollection.footerElement.getBoundingClientRect().top);
-	        }
-	        return !((collapseCollection.topMargin || 0) + collapseCollection.playerElement.getBoundingClientRect().height <
-	            collapseCollection.footerElement.getBoundingClientRect().top);
+	        // if (!collapseCollection.footerElement) {
+	        //     return false;
+	        // }
+	        // if (collapseCollection.playerElement.className.indexOf('adthrive-collapse-bottom') >= 0 ||
+	        //     (collapseCollection.lastCollapsedClasses && collapseCollection.lastCollapsedClasses.indexOf('adthrive-collapse-bottom') >= 0)) {
+	        //     const footerBottom = calculateFooterBottom();
+	        //     return !(window.innerHeight - footerBottom < collapseCollection.footerElement.getBoundingClientRect().top);
+	        // }
+	        // return !((collapseCollection.topMargin || 0) + collapseCollection.playerElement.getBoundingClientRect().height <
+	        //     collapseCollection.footerElement.getBoundingClientRect().top);
 	    }
 	    static toggleCollapsedPlayerClasses(toggleOn, collapseCollection) {
             console.warn('debug collapse toggle player class');
-	        const utils = collapseCollection.playerInstance.utils;
-	        const toggleClass = hasProperty(utils, 'toggleClass') && typeof utils.toggleClass === 'function' ? utils.toggleClass : () => { };
-	        if (collapseCollection.forceMobile) {
-	            toggleClass(collapseCollection.playerElement, "adthrive-collapse-mobile" , toggleOn);
-	            toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSizeType, toggleOn);
-	            toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSubType, toggleOn);
-	            if (collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-left"  ||
-	                collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-right" ) {
-	                this.repositionCollapseMobileBottom(collapseCollection);
-	            }
-	        }
-	        else {
-	            toggleClass(collapseCollection.playerElement, collapseCollection.collapseType, toggleOn);
-	            if (collapseCollection.collapseSubType) {
-	                toggleClass(collapseCollection.playerElement, collapseCollection.collapseSubType, toggleOn);
-	            }
-	            if (collapseCollection.collapseMobileSizeType) {
-	                toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSizeType, toggleOn);
-	            }
-	            if (collapseCollection.collapseType === "adthrive-collapse-mobile" ) {
-	                toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSubType, toggleOn);
-	                if (collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-left"  ||
-	                    collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-right" ) {
-	                    this.repositionCollapseMobileBottom(collapseCollection);
-	                }
-	            }
-	        }
+	        // const utils = collapseCollection.playerInstance.utils;
+	        // const toggleClass = hasProperty(utils, 'toggleClass') && typeof utils.toggleClass === 'function' ? utils.toggleClass : () => { };
+	        // if (collapseCollection.forceMobile) {
+	        //     toggleClass(collapseCollection.playerElement, "adthrive-collapse-mobile" , toggleOn);
+	        //     toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSizeType, toggleOn);
+	        //     toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSubType, toggleOn);
+	        //     if (collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-left"  ||
+	        //         collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-right" ) {
+	        //         this.repositionCollapseMobileBottom(collapseCollection);
+	        //     }
+	        // }
+	        // else {
+	        //     toggleClass(collapseCollection.playerElement, collapseCollection.collapseType, toggleOn);
+	        //     if (collapseCollection.collapseSubType) {
+	        //         toggleClass(collapseCollection.playerElement, collapseCollection.collapseSubType, toggleOn);
+	        //     }
+	        //     if (collapseCollection.collapseMobileSizeType) {
+	        //         toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSizeType, toggleOn);
+	        //     }
+	        //     if (collapseCollection.collapseType === "adthrive-collapse-mobile" ) {
+	        //         toggleClass(collapseCollection.playerElement, collapseCollection.collapseMobileSubType, toggleOn);
+	        //         if (collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-left"  ||
+	        //             collapseCollection.collapseMobileSubType === "adthrive-collapse-bottom-right" ) {
+	        //             this.repositionCollapseMobileBottom(collapseCollection);
+	        //         }
+	        //     }
+	        // }
 	    }
 	    static repositionCollapseMobileBottom(collapseCollection) {
             console.warn('debug collapse reposition off');
@@ -17581,31 +17581,31 @@ var adthrive = (function () {
 	    }
 	    static resizeContainer(collapseCollection) {
             console.warn('debug collapse resize cont');
-	        collapseCollection.playerContainer.style.height = `${collapseCollection.playerElement.offsetHeight + 30}px`;
+	        //collapseCollection.playerContainer.style.height = `${collapseCollection.playerElement.offsetHeight + 30}px`;
 	    }
 	    static startCollapseTimer(collapseCollection) {
             console.warn('debug collapse start timer');
-	        if (collapseCollection.collapseTimer.isRunning) {
-	            return;
-	        }
-	        if (!collapseCollection.collapseTimer.startTime) {
-	            collapseCollection.collapseTimer.startTime = new Date();
-	            collapseCollection.collapseTimer.lastCollapsedTime = collapseCollection.collapseTimer.startTime;
-	        }
-	        else {
-	            collapseCollection.collapseTimer.lastCollapsedTime = new Date();
-	        }
-	        collapseCollection.collapseTimer.isRunning = true;
+	        // if (collapseCollection.collapseTimer.isRunning) {
+	        //     return;
+	        // }
+	        // if (!collapseCollection.collapseTimer.startTime) {
+	        //     collapseCollection.collapseTimer.startTime = new Date();
+	        //     collapseCollection.collapseTimer.lastCollapsedTime = collapseCollection.collapseTimer.startTime;
+	        // }
+	        // else {
+	        //     collapseCollection.collapseTimer.lastCollapsedTime = new Date();
+	        // }
+	        // collapseCollection.collapseTimer.isRunning = true;
 	    }
 	    static stopCollapseTimer(collapseCollection) {
             console.warn('debug collapse stop timer');
-	        if (!collapseCollection.collapseTimer.isRunning) {
-	            return;
-	        }
-	        if (collapseCollection.collapseTimer.lastCollapsedTime) {
-	            collapseCollection.collapseTimer.timeCollapsed += new Date().getTime() - collapseCollection.collapseTimer.lastCollapsedTime.getTime();
-	        }
-	        collapseCollection.collapseTimer.isRunning = false;
+	        // if (!collapseCollection.collapseTimer.isRunning) {
+	        //     return;
+	        // }
+	        // if (collapseCollection.collapseTimer.lastCollapsedTime) {
+	        //     collapseCollection.collapseTimer.timeCollapsed += new Date().getTime() - collapseCollection.collapseTimer.lastCollapsedTime.getTime();
+	        // }
+	        // collapseCollection.collapseTimer.isRunning = false;
 	    }
 	};
 	CollapseUtils.collapseEvent = new Emitter();
