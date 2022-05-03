@@ -17572,12 +17572,12 @@ var adthrive = (function () {
 	        }
 	    }
 	    static repositionCollapseMobileBottom(collapseCollection) {
-            console.warn('debug collapse reposition');
-	        if (collapseCollection.playerElement.className.indexOf('adthrive-collapse-bottom') >= 0) {
-	            const footerBottom = calculateFooterBottom();
-	            collapseCollection.playerElement.style.setProperty('top', 'auto', 'important');
-	            collapseCollection.playerElement.style.setProperty('bottom', `${footerBottom}px`, 'important');
-	        }
+            console.warn('debug collapse reposition off');
+	        // if (collapseCollection.playerElement.className.indexOf('adthrive-collapse-bottom') >= 0) {
+	        //     const footerBottom = calculateFooterBottom();
+	        //     collapseCollection.playerElement.style.setProperty('top', 'auto', 'important');
+	        //     collapseCollection.playerElement.style.setProperty('bottom', `${footerBottom}px`, 'important');
+	        // }
 	    }
 	    static resizeContainer(collapseCollection) {
             console.warn('debug collapse resize cont');
