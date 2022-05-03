@@ -17494,6 +17494,7 @@ var adthrive = (function () {
 	        }
 	    }
 	    static uncollapse(collapseCollection) {
+            console.warn('debug uncollapse');
 	        CollapseUtils_1.uncollapseEvent.emit().catch(() => { });
 	        this.toggleCollapsedPlayerClasses(false, collapseCollection);
 	        this._unstickFromSidebar(collapseCollection.playerElement);
@@ -18570,11 +18571,11 @@ var adthrive = (function () {
 	        }
 	        this._playerInstance = window.jwplayer(this._playlistId);
             console.warn('debug removing collapse');
-	        // if (this._collapseCollection) {
-	        //     this._collapseCollection.playerInstance = this._playerInstance;
-	        //     this._collapseCollection.playerContainer = this._playerContainer;
-	        //     this._collapseCollection.playerElement = this._playerElement;
-	        // }
+	        if (this._collapseCollection) {
+	            this._collapseCollection.playerInstance = this._playerInstance;
+	            this._collapseCollection.playerContainer = this._playerContainer;
+	            this._collapseCollection.playerElement = this._playerElement;
+	        }
 	        this.jwSetup(this._playerConfig);
 	        this._playerInstance.on('ready', this.playerReady.bind(this));
 	        this._config.video.playlistPlayerAdded = true;
